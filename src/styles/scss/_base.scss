@@ -1,0 +1,55 @@
+@use "utils" as u;
+
+/*---------------------------
+Basic Structure
+---------------------------*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: u.$font-primary;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  height: 100%;
+
+  @include u.respond(desktop) {
+    font-size: 60%;
+  }
+
+  @include u.respond(tab-land) {
+    font-size: 54%;
+  }
+
+  @include u.respond(phone-large) {
+    font-size: 50%;
+  }
+
+  @include u.respond(phone) {
+    font-size: 48%;
+  }
+}
+
+body {
+  line-height: 1.6;
+  color: u.$color-white;
+  background: linear-gradient(-45deg, u.$color-blue, u.$color-grey, u.$color-green);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  display: block;
+  min-height: 100vh;
+  padding: 2rem 0;
+
+  @include u.respond(phone-large) {
+    padding: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}

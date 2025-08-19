@@ -1,0 +1,25 @@
+# Node.js dependencies
+node_modules/
+
+# Build / production output
+build/
+.parcel-cache/
+
+# Environment variables (secrets)
+.env
+.env.local
+.env.*.local
+
+# OS / Editor junk files
+.DS_Store
+Thumbs.db
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Sass / CSS artifacts
+*.css.map
+
+# Local Netlify folder
+.netlify

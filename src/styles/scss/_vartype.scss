@@ -1,0 +1,63 @@
+/*
+Color	Hex Code	Used In
+Charcoal Blue == #1E1E2E --> Background (main), sidebar, overall layout base
+Soft Ash Gray == #2A2A3C --> Card backgrounds, highlight boxes
+Calm Teal == #4FD1C5 --> Accent indicators (e.g., UV Index, Wind arrows, WWS), top navbar highlight
+Muted Gold == #FACC15 --> Weather icons (sun/cloud), sunrise/sunset symbols
+Seafoam Green == #34D399 --> Icons for air quality, wind direction, visibility, and precipitation status
+Mist White == #E5E7EB --> Main text (temperatures, labels, titles)
+Slate Gray == #9CA3AF --> Secondary text (e.g., description texts, "Mostly cloudy", "healthy")
+
+#05181D
+#05161c
+#20343d
+#70cfac
+#e8ad23
+
+*/
+
+/*-----------------------
+Variables
+------------------------*/
+
+$color-primary: #0d1f26;
+$color-blue: #05161c;
+$color-grey: #20343d;
+$color-teal: #70cfac;
+$color-gold: #e8ad23;
+$color-green: #34d399;
+$color-white: #e5e7eb;
+$color-gray: #9ca3af;
+$color-black: #000000;
+$color-error: #d9534f;
+
+$font-primary: "DM Sans", sans-serif;
+$font-secondary: "Inter", sans-serif;
+
+/*-----------------------
+typography
+------------------------*/
+
+.heading-1 {
+  font-size: 2.3rem;
+  font-weight: 400;
+  color: $color-white;
+  margin-bottom: 1rem;
+}
+
+.heading-2 {
+  color: $color-teal;
+  font-size: 2.6rem;
+  font-weight: light;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.para {
+  font-size: 2rem;
+  font-weight: light;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-wrap: wrap;
+  font-family: $font-secondary;
+}

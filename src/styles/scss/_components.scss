@@ -1,0 +1,102 @@
+@use "utils" as u;
+
+.icon {
+  width: 2.6rem;
+  height: 2.6rem;
+
+  &--black {
+    color: u.$color-black;
+  }
+
+  &--white {
+    fill: u.$color-white;
+  }
+
+  &--gold {
+    color: u.$color-gold;
+
+    &-fill {
+      fill: u.$color-gold;
+      color: u.$color-gold;
+    }
+  }
+
+  &--teal {
+    color: u.$color-teal;
+  }
+}
+
+.icon-small {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.icon-med {
+  width: 3rem;
+  height: 3rem;
+}
+
+.icon-main {
+  width: 6rem;
+  height: 6rem;
+  cursor: pointer;
+}
+
+.slider__btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: u.$color-teal;
+  border-radius: 30px;
+  z-index: 1;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.temp__btn {
+  @include u.flex;
+  flex: 1;
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: transparent;
+  color: u.$color-white;
+  font-size: 2.4rem;
+  font-weight: bold;
+  z-index: 10;
+  transition: color 0.3s ease;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &.active {
+    color: u.$color-black;
+  }
+}
+
+.slider__btn.slide-right {
+  transform: translateX(100%);
+}
+
+.error {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-wrap: wrap;
+  color: u.$color-error;
+  font-family: u.$font-secondary;
+}
+
+.spinner {
+  margin: 2rem auto;
+  text-align: center;
+
+  svg {
+    height: 4rem;
+    width: 4rem;
+    color: u.$color-gold;
+    animation: rotate 2s infinite linear;
+  }
+}

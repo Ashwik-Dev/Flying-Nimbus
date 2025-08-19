@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang=en><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>Flying Nimbus</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap" rel=stylesheet><link rel=stylesheet href=/flying-Nimbus.84ad8c78.css><script type=module src=/flying-Nimbus.a1eb4c9e.js></script><body>
+    <div class=container>
+      <header class=header>
+        <nav class=navbar>
+          <div class=navbar__side>
+            <form class=navbar__search>
+              <button type=button id=get-geolocation>
+                <i class="icon icon--black" data-lucide=locate-fixed></i>
+              </button>
+              <input placeholder="Search by City" name=location id=input__city>
+              <button>
+                <i class="icon icon--black" data-lucide=search></i>
+              </button>
+            </form>
+          </div>
+          <div class="navbar__icons temp__box-btns">
+            <div class=slider__btn></div>
+            <button class="navbar__icons-cel temp__btn temp__btn-C">
+              °C
+            </button>
+            <button class="navbar__icons-fah temp__btn temp__btn-F">
+              °F
+            </button>
+          </div>
+        </nav>
+        <main class=main>
+          <div class=sidebar>
+            <div class=sidebar__location--status>
+              <span data-location>Location</span>
+            </div>
+            <div class=sidebar__main-container>
+              <div class=sidebar__curr>
+                <div>
+                  <i class="icon--gold-fill icon-main" data-lucide=cloudy data-climate-icon></i>
+                  <img class="hidden icon-main" data-climate-img src=# alt>
+                </div>
+                <div class=sidebar__curr--temp>
+                  <span data-currtemp>00</span>° <span data-tempdeg>C</span>
+                </div>
+                <div class=sidebar__curr--nowevent>
+                  <span class=day data-weekday>Day</span>
+                  <span class=time data-time>--:--</span>
+                </div>
+              </div>
+              <div class=sidebar__today>
+                <div class=sidebar__today--climate>
+                  <i class="icon icon--white" data-lucide=cloudy data-climate-icon></i>
+                  <img class="hidden icon icon--white" data-climate-img src=# alt>
+                  <span data-climate-des>Climate Description</span>
+                </div>
+                <div class=sidebar__today--temp>
+                  <i class="icon icon--gold" data-lucide=thermometer-sun></i>
+                  <span data-mintemp>0</span>° /
+                  <span data-maxtemp>0</span>°
+                </div>
+              </div>
+              <div class=sidebar__sunevent>
+                <div class=sidebar__sunevent--rise>
+                  <span>Sunrise:</span>
+                  <div class=sidebar__sunevent--message>
+                    <div class=sidebar__sunevent--icon>
+                      <i class="icon icon--gold-fill" data-lucide=sun></i>
+                    </div>
+                    <span data-sunrise>--:--</span>
+                  </div>
+                </div>
+                <div class=sidebar__sunevent--set>
+                  <sapn>Sunset:</sapn>
+                  <div class=sidebar__sunevent--message>
+                    <div class=sidebar__sunevent--icon>
+                      <i class="icon icon--gold-fill" data-lucide=moon></i>
+                    </div>
+                    <span data-sunset>--:--</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer class="footer footer__sidebar">
+              <p>
+                © 2025 All rights reserved by
+                <strong><a href=https://github.com/Ashwik-Dev/Flying-Nimbus.git>Flying Nimbus</a></strong>. Design and development by
+                <strong><a href=https://www.linkedin.com/in/ashwik-srikakulapu>Ashwik</a></strong>.
+              </p>
+            </footer>
+          </div>
+
+          <div class=content>
+            <div class="content__report week-report--js">
+              <div class=content__report-before>
+                <h1 class=heading-2>Flying Nimbus Awaits!</h1>
+                <p class=para>
+                  Search for a city or use your current location to see the
+                  7-day forecast
+                </p>
+              </div>
+
+              
+            </div>
+
+            <div class=content__forecast>
+              <h1 class=heading-1>Today's Forecast</h1>
+              <div class="content__forecast--card-container forecast-container">
+                
+                <div class="content__forecast--card forecast__card">
+                  <div class=forecast__card--name>
+                    Feels Like
+                    <i class="icon-hover icon-small" data-lucide=info></i>
+                    <span> Temperature adjusted for wind and humidity. </span>
+                  </div>
+                  <div class=forecast__card--value>
+                    <span data-feelslike>--</span><abbr data-tempdeg>C</abbr>
+                  </div>
+                  <div class=forecast__card--des>
+                    <i class="icon--teal icon-med" data-lucide=thermometer-sun></i>
+                    <span data-feelslike-des>Description</span>
+                  </div>
+                </div>
+
+                
+                <div class="content__forecast--card forecast__card">
+                  <div class=forecast__card--name>
+                    UV Index
+                    <i class="icon-hover icon-small" data-lucide=info></i>
+                    <span> Strength of the sun’s UV rays. </span>
+                  </div>
+                  <div class=forecast__card--value>
+                    <span data-uv-index>--</span>
+                  </div>
+                  <div class=forecast__card--des>
+                    <i class="icon--teal icon-med" data-lucide=sun-medium></i>
+                    <span data-uv-index-des>Description</span>
+                  </div>
+                </div>
+
+                
+                <div class="content__forecast--card forecast__card">
+                  <div class=forecast__card--name>
+                    Wind
+                    <i class="icon-hover icon-small" data-lucide=info></i>
+                    <span> Speed and direction of moving air. </span>
+                  </div>
+                  <div class=forecast__card--value>
+                    <span data-wind-speed>--</span>km/h
+                  </div>
+                  <div class=forecast__card--des>
+                    <i class="icon--teal icon-med" data-lucide=wind></i>
+                    <span data-wind-dir>Description</span>
+                  </div>
+                </div>
+
+                
+                <div class="content__forecast--card forecast__card">
+                  <div class=forecast__card--name>
+                    Cloud Cover
+                    <i class="icon-hover icon-small" data-lucide=info></i>
+                    <span> Percentage of sky covered by clouds. </span>
+                  </div>
+                  <div class=forecast__card--value>
+                    <span data-cloud>--</span>%
+                  </div>
+                  <div class=forecast__card--des>
+                    <i class="icon--teal icon-med" data-lucide=cloudy></i>
+                    <span data-cloud-des>Description</span>
+                  </div>
+                </div>
+
+                
+                <div class="content__forecast--card forecast__card">
+                  <div class=forecast__card--name>
+                    Precipitation
+                    <i class="icon-hover icon-small" data-lucide=info></i>
+                    <span>
+                      Water falling from the sky as rain, snow, etc.
+                    </span>
+                  </div>
+                  <div class=forecast__card--value>
+                    <span data-precip>--</span>mm
+                  </div>
+                  <div class=forecast__card--des>
+                    <i class="icon--teal icon-med" data-lucide=cloud-rain></i>
+                    <span data-precip-des>Description</span>
+                  </div>
+                </div>
+
+                
+                <div class="content__forecast--card forecast__card">
+                  <div class=forecast__card--name>
+                    Visibility
+                    <i class="icon-hover icon-small" data-lucide=info></i>
+                    <span> How far you can see clearly. </span>
+                  </div>
+                  <div class=forecast__card--value>
+                    <span data-vis>--</span>km
+                  </div>
+                  <div class=forecast__card--des>
+                    <i class="icon--teal icon-med" data-lucide=eye></i>
+                    <span data-vis-des>Description</span>
+                  </div>
+                </div>
+
+                
+                <div class="content__forecast--card forecast__card">
+                  <div class=forecast__card--name>
+                    Humidity
+                    <i class="icon-hover icon-small" data-lucide=info></i>
+                    <span> Amount of moisture in the air. </span>
+                  </div>
+                  <div class=forecast__card--value>
+                    <span data-humidity>--</span>%
+                  </div>
+                  <div class=forecast__card--des>
+                    <i class="icon--teal icon-med" data-lucide=droplets></i>
+                    <span data-humidity-des>Description</span>
+                  </div>
+                </div>
+
+                
+                <div class="content__forecast--card forecast__card">
+                  <div class=forecast__card--name>
+                    Air Quality
+                    <i class="icon-hover icon-small" data-lucide=info></i>
+                    <span> Cleanliness of the air you breathe. </span>
+                  </div>
+                  <div class=forecast__card--value>
+                    <span data-aqi-us>--</span>
+                  </div>
+                  <div class=forecast__card--des>
+                    <i class="icon--teal icon-med" data-lucide=wind-arrow-down></i>
+                    <span data-aqi-us-des>Description</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </header>
+      <footer class="footer footer__main">
+        <p>
+          © 2025 All rights reserved by
+          <strong><a href=https://github.com/Ashwik-Dev/Flying-Nimbus.git>Flying Nimbus</a></strong>. Design and development by
+          <strong><a href=https://www.linkedin.com/in/ashwik-srikakulapu>Ashwik</a></strong>.
+        </p>
+      </footer>
+    </div>
+
+    <script src=https://unpkg.com/lucide@latest/dist/umd/lucide.js></script>
+    <script>lucide.createIcons();</script>
+  
+
