@@ -21,22 +21,31 @@ export const getLocation = async function (cityName) {
 
     // console.log(`🌐 Fetching fresh data for ${cityName}`);
 
+    // const res = await fetch(
+    //   `${API_URL}key=${API_KEY}&q=${cityName}&days=${API_DAYS}&aqi=${API_AQI}&alerts=${API_ALERT}`
+    // );
+
+    // if (!res.ok) {
+    //   let errorMessage = `${cityName} not found. Please enter a valid city name.`;
+
+    //   if (res.status === 401 || res.status === 403) {
+    //     errorMessage = "Invalid API Key or Access Forbidden.";
+    //   } else if (res.status === 429) {
+    //     errorMessage = "Too Many Requests. Please try again later.";
+    //   } else if (res.status >= 500) {
+    //     errorMessage = "Server Error. Please try again later.";
+    //   }
+
+    //   throw new Error(errorMessage);
+    // }
+
     const res = await fetch(
-      `${API_URL}key=${API_KEY}&q=${cityName}&days=${API_DAYS}&aqi=${API_AQI}&alerts=${API_ALERT}`
+      `/.netlify/functions/weather?location=${encodeURIComponent(cityName)}`
     );
 
     if (!res.ok) {
-      let errorMessage = `${cityName} not found. Please enter a valid city name.`;
-
-      if (res.status === 401 || res.status === 403) {
-        errorMessage = "Invalid API Key or Access Forbidden.";
-      } else if (res.status === 429) {
-        errorMessage = "Too Many Requests. Please try again later.";
-      } else if (res.status >= 500) {
-        errorMessage = "Server Error. Please try again later.";
-      }
-
-      throw new Error(errorMessage);
+      const errorData = await res.json();
+      throw new Error(errorData.message || "Failed to fetch weather data");
     }
 
     const data = await res.json();

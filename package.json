@@ -7,10 +7,7 @@
     "dev": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist",
     "start": "npx netlify dev",
-    "netlify:dev": "npx netlify dev",
-    "netlify:build": "npx netlify build",
-    "netlify:deploy": "npx netlify deploy",
-    "netlify:deploy:prod": "npx netlify deploy --prod"
+    "netlify:build": "npx netlify build"
   },
   "author": "ashwik",
   "license": "ISC",

@@ -4,6 +4,7 @@ node_modules/
 # Build / production output
 build/
 .parcel-cache/
+design-temp/
 
 # Environment variables (secrets)
 .env
@@ -23,3 +24,7 @@ Thumbs.db
 
 # Local Netlify folder
 .netlify
+
+# Documentation files
+*.docx/
+*.pdf
