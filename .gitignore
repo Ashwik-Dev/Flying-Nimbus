@@ -23,7 +23,8 @@ Thumbs.db
 *.css.map
 
 # Local Netlify folder
-.netlify
+.netlify/
+netlify.toml
 
 # Documentation files
 *.docx/
