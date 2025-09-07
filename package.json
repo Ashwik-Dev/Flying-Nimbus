@@ -1,6 +1,7 @@
 {
   "name": "flyingnimbus",
   "version": "1.0.0",
+  "source": "index.html",
   "scripts": {
     "watch:scss": "sass ./src/styles/scss/style.scss ./src/styles/css/style.css --watch --style expanded",
     "build:css": "sass ./src/styles/scss/style.scss ./src/styles/css/style.css --style compressed",

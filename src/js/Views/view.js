@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 
 export default class View {
@@ -28,11 +28,10 @@ export default class View {
     );
     const climateImg = this._parentElement.querySelector("[data-climate-img]");
 
-    climateIcon.classList.add("hidden");
-    climateImg.classList.remove("hidden");
-
-    climateImg.src = this._data.curIcon;
-    climateImg.alt = this._data.curText;
+    if (climateIcon && climateImg) {
+      climateIcon.classList.add("hidden");
+      climateImg.classList.remove("hidden");
+    }
   }
 
   _updateElements(updates) {
@@ -44,6 +43,14 @@ export default class View {
         } else {
           element.setAttribute(attribute, content);
         }
+
+        if (selector === "[data-climate-img]") {
+          console.log(`Setting ${attribute} to:`, content);
+          console.log(`Element found:`, element);
+          console.log(`Final src value:`, element.src);
+        }
+      } else {
+        console.log(`Element not found for selector: ${selector}`);
       }
     });
   }

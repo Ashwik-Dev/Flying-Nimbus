@@ -27,5 +27,5 @@ Thumbs.db
 netlify.toml
 
 # Documentation files
-*.docx/
+*.docx
 *.pdf

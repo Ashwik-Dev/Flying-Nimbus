@@ -52,14 +52,14 @@
               <div class="sidebar__curr">
                 <div class="">
                   <i
-                    class="icon-main icon--gold-fill"
+                    class="icon-main icon--gold-fill hidden"
                     data-lucide="cloudy"
                     data-climate-icon
                   ></i>
                   <img
-                    class="icon-main hidden"
+                    class="icon-main main__event--icon"
                     data-climate-img
-                    src="#"
+                    src="./src/icons/cloudy.svg"
                     alt=""
                   />
                 </div>
@@ -74,20 +74,20 @@
               <div class="sidebar__today">
                 <div class="sidebar__today--climate">
                   <i
-                    class="icon icon--white"
+                    class="icon icon--white hidden"
                     data-lucide="cloudy"
                     data-climate-icon
                   ></i>
                   <img
-                    class="icon icon--white hidden"
-                    data-climate-img
-                    src="#"
+                    class="icon-med icon--white event--icon"
+                    src="./src/icons/cloudy.svg"
                     alt=""
                   />
                   <span data-climate-des>Climate Description</span>
                 </div>
                 <div class="sidebar__today--temp">
-                  <i class="icon icon--gold" data-lucide="thermometer-sun"></i>
+                  <!-- <i class="icon icon--gold" data-lucide="thermometer-sun"></i> -->
+                  <img class="icon-med icon--gold" src="./src/icons/thermometer.svg" style="color: red;" alt="">
                   <span data-mintemp>0</span>&deg; /
                   <span data-maxtemp>0</span>&deg;
                 </div>
@@ -97,7 +97,8 @@
                   <span>Sunrise:</span>
                   <div class="sidebar__sunevent--message">
                     <div class="sidebar__sunevent--icon">
-                      <i class="icon icon--gold-fill" data-lucide="sun"></i>
+                      <!-- <i class="icon icon--gold-fill" data-lucide="sun"></i> -->
+                      <img class="icon-med icon--gold-fill" src="./src/icons/sunrise.svg" alt="sunrise icon">
                     </div>
                     <span data-sunrise>--:--</span>
                   </div>
@@ -106,7 +107,8 @@
                   <sapn>Sunset:</sapn>
                   <div class="sidebar__sunevent--message">
                     <div class="sidebar__sunevent--icon">
-                      <i class="icon icon--gold-fill" data-lucide="moon"></i>
+                      <!-- <i class="icon icon--gold-fill" data-lucide="moon"></i> -->
+                      <img class="icon-med icon--gold-fill" src="./src/icons/moonrise.svg" alt="sunset icon">
                     </div>
                     <span data-sunset>--:--</span>
                   </div>

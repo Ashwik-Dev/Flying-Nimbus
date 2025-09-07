@@ -10,11 +10,11 @@ const controlGeoLocation = async function () {
   try {
     sidebarView.renderSpinner();
 
-    const coords = await model.getGeoLocation();
+    const coords = await model.getCurrentLocation();
 
     if (!coords) throw new Error("Unable to retrieve geolocation");
 
-    controlSearch(coords);
+    controlSearch(null, coords);
   } catch (err) {
     sidebarView.renderError(err.message);
     weeksView.restoreInitial();
@@ -22,22 +22,24 @@ const controlGeoLocation = async function () {
   }
 };
 
-const controlSearch = async function (cityName) {
+const controlSearch = async function (cityName, coords) {
   try {
-    if (!cityName || typeof cityName !== "string") {
-      throw new Error("Please enter a valid city name");
-    }
-
     sidebarView.renderSpinner();
     weeksView.renderSpinner();
 
-    const data = await model.getLocation(cityName);
+    const locationData = await model.getGeoLocation(
+      cityName || null,
+      coords || null
+    );
+
+    const data = await model.getLocation(locationData);
 
     sidebarView.render(data);
     weeksView.render(data);
     eventsView.render(data);
     tempScaleView.updateActiveBtn(data.tempScale);
   } catch (err) {
+    console.error(err);
     sidebarView.renderError(err.message);
     weeksView.restoreInitial();
   }
@@ -47,13 +49,13 @@ const controlTempScale = function () {
   try {
     const data = model.toggleTempScale();
 
-  if (!data) return;
+    if (!data) return;
 
-  tempScaleView.updateActiveBtn(data.tempScale);
+    tempScaleView.updateActiveBtn(data.tempScale);
 
-  sidebarView.render(data);
-  weeksView.render(data);
-  eventsView.render(data);
+    sidebarView.render(data);
+    weeksView.render(data);
+    eventsView.render(data);
   } catch (err) {
     sidebarView.renderError(err.message);
   }

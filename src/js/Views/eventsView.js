@@ -5,18 +5,24 @@ class EventsView extends View {
   _parentElement = document.querySelector(".forecast-container");
 
   _renderForecast() {
-    const feelsLike = Math.round(
-      this._renderDegScale(this._data.feelsLikeC, this._data.feelsLikeF)
-    );
-    const uvIndex = Math.trunc(this._data.uvIndex);
-    const { windSpeed } = this._data;
-    const { windDirection } = this._data;
-    const { visibility } = this._data;
-    const { cloud } = this._data;
-    const { precip } = this._data;
-    const { humidity } = this._data;
-    const aqi = this._data.aqi.usIndex;
-    const tempScale = this._data.tempScale === "c" ? "C" : "F";
+    const index = this._data.realHour;
+    
+    const uvIndex = Math.trunc(this._data.uvIndex[index]);
+    const windSpeed = this._data.windSpeed[index];
+    const windDirection = helpers.getWindDirections(this._data.windDirection[index]);
+    const visibility = Math.round(this._data.visibility[index] * 0.001);
+    const cloud = this._data.cloud[index];
+    const precip = this._data.precip[index];
+    const humidity = this._data.humidity[index];
+    const { aqi, category: aqiCategory } = helpers.getAirQualityDescription(this._data.aqi.pm2_5[index]);
+    const tempScale = this._data.tempScale === "C" ? "C" : "F";
+
+    let feelsLike;
+    if(tempScale === "C") {
+      feelsLike = Math.round(this._data.feelsLikeC[index]);
+    } else {
+      feelsLike = Math.round(helpers.convertCtoF(this._data.feelsLikeC[index]));
+    }
     const feelsLikeDeg = helpers.getFeelsLikeDescription(feelsLike, tempScale);
 
     this._updateElements([
@@ -51,10 +57,7 @@ class EventsView extends View {
         content: helpers.getHumidityDescription(humidity),
       },
       { selector: "[data-aqi-us]", content: aqi },
-      {
-        selector: "[data-aqi-us-des]",
-        content: helpers.getAirQualityDescription(aqi),
-      },
+      { selector: "[data-aqi-us-des]", content: aqiCategory },
     ]);
   }
 }

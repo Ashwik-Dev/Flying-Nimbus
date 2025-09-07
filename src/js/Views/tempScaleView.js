@@ -16,7 +16,7 @@ class TempScaleView extends View {
   }
 
   updateActiveBtn(scale) {
-    if (scale === "c") {
+    if (scale === "C") {
       this._celsiusBtn.classList.add("active");
       this._fahrenheitBtn.classList.remove("active");
       this._slider.classList.remove("slide-right");
