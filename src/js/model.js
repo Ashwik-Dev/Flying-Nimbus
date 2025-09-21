@@ -1,5 +1,10 @@
-import { DEFAULT_API_URL, WEATHER_API_URL, DEFAULT_AQI_URL, AQI_API_URL, DEFAULT_GEOLOCATION_URL } from "./config.js";
-
+import {
+  DEFAULT_API_URL,
+  WEATHER_API_URL,
+  DEFAULT_AQI_URL,
+  AQI_API_URL,
+  DEFAULT_GEOLOCATION_URL,
+} from "./config.js";
 
 // Obj to store data
 let state = {
@@ -7,19 +12,26 @@ let state = {
   record: {},
 };
 
-
 export const getGeoLocation = async function (cityName, coords) {
   try {
     let res;
-    if(cityName) {
-      res = await fetch(`${DEFAULT_GEOLOCATION_URL}/api/?q=${cityName}&limit=1`);
+    if (cityName) {
+      res = await fetch(
+        `${DEFAULT_GEOLOCATION_URL}/api/?q=${cityName}&limit=1`
+      );
     } else {
-      res = await fetch(`${DEFAULT_GEOLOCATION_URL}/reverse/?lat=${coords.lat}&lon=${coords.lng}`);
+      res = await fetch(
+        `${DEFAULT_GEOLOCATION_URL}/reverse/?lat=${coords.lat}&lon=${coords.lng}`
+      );
     }
 
     if (!res.ok) throw new Error("Failed to fetch geolocation data");
 
     let data = await res.json();
+
+    if (!data || data.features.length === 0)
+      throw new Error("Location not found. Please enter a valid city name.");
+
     data = data.features[0];
 
     state.geoLocation = {
@@ -32,21 +44,21 @@ export const getGeoLocation = async function (cityName, coords) {
 
     return state.geoLocation;
   } catch (err) {
-    console.error(err);
     throw err;
   }
 };
 
 export const getLocation = async function (location) {
   try {
+    if (!location.lat || !location.lng)
+      throw new Error("Invalid coordinates for weather data");
 
-    const weatherRes = await fetch(`${DEFAULT_API_URL}latitude=${location.lat}&longitude=${location.lng}&${WEATHER_API_URL}`);
-
-    const aqiRes =
-      await fetch(`${DEFAULT_AQI_URL}latitude=${location.lat}&longitude=${location.lng}&${AQI_API_URL}`);
+    const weatherRes = await fetch(
+      `${DEFAULT_API_URL}latitude\=${location.lat}&longitude=${location.lng}&${WEATHER_API_URL}`
+    );
 
     if (!weatherRes.ok) {
-      let errorMessage = `${location.city} not found. Please enter a valid city name.`;
+      let errorMessage = `Weather data not found.`;
 
       if (weatherRes.status === 401 || weatherRes.status === 403) {
         errorMessage = "Invalid API Key or Access Forbidden.";
@@ -59,14 +71,18 @@ export const getLocation = async function (location) {
       throw new Error(errorMessage);
     }
 
-    if(!aqiRes.ok) throw new Error("Failed to fetch air quality data");
+    const aqiRes = await fetch(
+      `${DEFAULT_AQI_URL}latitude=${location.lat}&longitude=${location.lng}&${AQI_API_URL}`
+    );
+
+    if (!aqiRes.ok) throw new Error("Failed to fetch air quality data");
 
     const weatherData = await weatherRes.json();
 
     if (!weatherData) throw new Error("Invalid API data received");
 
     const aqiData = await aqiRes.json();
-    
+
     if (!weatherData) throw new Error("Invalid API data received");
 
     const dateNow = new Date(weatherData.current.time);
@@ -107,8 +123,8 @@ export const getLocation = async function (location) {
 
       // from hourly forecast
       hourly: weatherData.hourly,
-      hourlyUnits: weatherData.hourly_units,    
-  
+      hourlyUnits: weatherData.hourly_units,
+
       aqi: {
         co: aqiData.hourly.carbon_monoxide,
         no2: aqiData.hourly.nitrogen_dioxide,
@@ -169,4 +185,9 @@ export const toggleTempScale = function () {
   }
   state.record.tempScale = state.record.tempScale === "C" ? "F" : "C";
   return state.record;
+};
+
+export const clearState = function () {
+  state.record = null;
+  state.geoLocation = {};
 };

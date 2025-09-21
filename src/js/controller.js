@@ -24,6 +24,10 @@ const controlGeoLocation = async function () {
 
 const controlSearch = async function (cityName, coords) {
   try {
+    // sidebarView.restoreInitial();
+    weeksView.restoreInitial();
+    eventsView.restoreInitial();
+
     sidebarView.renderSpinner();
     weeksView.renderSpinner();
 
@@ -39,9 +43,10 @@ const controlSearch = async function (cityName, coords) {
     eventsView.render(data);
     tempScaleView.updateActiveBtn(data.tempScale);
   } catch (err) {
-    console.error(err);
+    model.clearState();
     sidebarView.renderError(err.message);
     weeksView.restoreInitial();
+    eventsView.restoreInitial();
   }
 };
 

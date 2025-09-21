@@ -26,11 +26,16 @@ export const getFeelsLikeDescription = (temp, scale = "C") => {
     "Very Hot",
   ];
 
+  let describe;
   for (let i = 0; i < thresholds.length; i++) {
-    if (temp <= thresholds[i]) return descriptions[i];
+    if (temp > thresholds[thresholds.length - 1]) {
+      describe = descriptions[descriptions.length - 1];
+    } else if (temp <= thresholds[i]) {
+      describe = descriptions[i];
+    }
   }
   // return descriptions[descriptions.length - 1];
-  return "unknown";
+  return describe;
 };
 
 export const getUVIndexDescription = (uvIndex) => {

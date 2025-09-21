@@ -19,9 +19,9 @@ class EventsView extends View {
 
     let feelsLike;
     if(tempScale === "C") {
-      feelsLike = Math.round(this._data.feelsLikeC[index]);
+      feelsLike = Math.round(this._data.feelsLikeC[index]) - 1;
     } else {
-      feelsLike = Math.round(helpers.convertCtoF(this._data.feelsLikeC[index]));
+      feelsLike = Math.round(helpers.convertCtoF(this._data.feelsLikeC[index])) - 1;
     }
     const feelsLikeDeg = helpers.getFeelsLikeDescription(feelsLike, tempScale);
 
